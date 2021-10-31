@@ -1,0 +1,14 @@
+@startuml start-content--room-apparatus
+title start-content--room-apparatus
+control 各室各機器ページ as ra
+entity "運転状況\n確認API" as cond
+
+activate ra
+ra -> cond:対象室の\n各機器運転状況問い合わせ
+activate cond
+cond --> ra:運転状況返却
+deactivate cond
+ra -> ra:エラー発生している機器に関しては\n・タブを警告スタイルにする\n・運転状況でエラー内容を表示
+ra -> ra:取得した運転状況を基に\n設定項目の現在値を出力
+
+@enduml

@@ -1,0 +1,20 @@
+@startuml room-apparatus--check-error-and-repair
+title room-apparatus--check-error-and-repair
+actor User
+control 各室各機器ページ as ra
+entity "エラー復旧API" as rpr
+
+ra -> User:運転状況欄\n下記内容が表示されている\n・エラー発生\n・状況
+activate User
+User -> ra:復旧ボタン押下
+deactivate User
+activate ra
+ra -> rpr:エラーの復旧
+activate rpr
+rpr -> rpr:復旧処理
+rpr --> ra:結果を返却
+deactivate rpr
+ra -> ra:成功の場合\nエラー表示を復旧
+deactivate ra
+
+@enduml

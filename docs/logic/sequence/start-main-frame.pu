@@ -1,0 +1,27 @@
+@startuml start-main-frame
+title start-main-frame
+actor User
+control メインフレーム部分 as fm
+
+User -> fm:アクセス
+activate fm
+fm -> fm:ロード中表示
+
+par 運転状況
+    create entity "運転状況\n確認API" as cond
+    fm -> cond:各機器運転状況問い合わせ
+    cond --> fm:運転状況返却
+    fm -> fm:エラー発生している場合は\n運転状況ランプを警告表示
+    else サイドバーの初期化
+    create entity "部屋情報データソース" as rmSrc
+    fm -> rmSrc:設定済みの部屋名を問い合わせ
+    activate rmSrc
+    rmSrc --> fm:部屋名返却
+    deactivate rmSrc
+    fm -> fm:サイドバーに部屋名ごとのボタンを配置
+    fm -> fm:部屋情報をメモリに保持
+end
+fm -> fm:ロード中表示を削除
+note over fm: コンテンツごとのデータ取得処理
+
+@enduml

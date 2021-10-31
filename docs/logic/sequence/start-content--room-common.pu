@@ -1,0 +1,13 @@
+@startuml start-content--room-apparatus
+title start-content--room-apparatus
+control 各室ページ共通 as rc
+entity "部屋情報" as rinfo
+
+activate rc
+rc -> rinfo:機器の種類取得
+activate rinfo
+rinfo --> rc
+deactivate rinfo
+rc -> rc:タブを作成
+
+@enduml

@@ -1,0 +1,27 @@
+@startuml room-apparatus--submit-setting-value
+title room-apparatus--submit-setting-value
+actor User
+control 各室各機器ページ as ra
+entity "部屋情報" as rinfo
+entity "運転設定\n変更API" as cond
+
+activate User
+User -> ra:設定変更ボタン押下
+deactivate User
+activate ra
+ra -> ra:設定値/現在値欄の\n固定表示テーブルを非表示
+ra -> rinfo:機器ごとの設定入力欄タイプを取得
+rinfo --> ra
+ra -> ra:設定値/現在値欄に\n入力欄を表示（編集モード）
+deactivate ra
+activate User
+User -> ra:完了ボタン押下
+deactivate User
+activate ra
+ra -> ra:バリデーションチェック
+ra -> cond:運転設定の変更問い合わせ
+cond -> cond:各機器の\n運転設定を変更
+cond --> ra:結果を返却
+ra -> ra:完了インジケータ表示
+
+@enduml
