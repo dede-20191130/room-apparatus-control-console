@@ -1,5 +1,5 @@
-@startuml start-content--room-apparatus
-title start-content--room-apparatus
+@startuml start-content--room-common
+title start-content--room-common
 control 各室ページ共通 as rc
 entity "部屋情報" as rinfo
 

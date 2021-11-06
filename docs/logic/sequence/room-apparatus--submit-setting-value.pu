@@ -3,7 +3,7 @@ title room-apparatus--submit-setting-value
 actor User
 control 各室各機器ページ as ra
 entity "部屋情報" as rinfo
-entity "運転設定\n変更API" as cond
+entity "運転設定（各室）\n変更API" as cond
 
 activate User
 User -> ra:設定変更ボタン押下

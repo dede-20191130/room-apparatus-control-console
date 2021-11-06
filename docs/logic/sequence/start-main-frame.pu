@@ -8,7 +8,7 @@ activate fm
 fm -> fm:ロード中表示
 
 par 運転状況
-    create entity "運転状況\n確認API" as cond
+    create entity "運転状況（全機器）\n取得API" as cond
     fm -> cond:各機器運転状況問い合わせ
     cond --> fm:運転状況返却
     fm -> fm:エラー発生している場合は\n運転状況ランプを警告表示

@@ -1,7 +1,7 @@
 @startuml start-content--room-apparatus
 title start-content--room-apparatus
 control 各室各機器ページ as ra
-entity "運転状況\n確認API" as cond
+entity "運転状況（各室）\n取得API" as cond
 
 activate ra
 ra -> cond:対象室の\n各機器運転状況問い合わせ

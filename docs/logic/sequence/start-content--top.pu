@@ -1,15 +1,17 @@
 @startuml start-content--top
 title start-content--top
 control TOP as tp
-entity "運転状況\n確認API" as cond
+entity "運転状況（全機器）\n取得API" as cond
 
 activate tp
+tp -> cond:対象室の\n各機器運転状況問い合わせ
+activate cond
+cond --> tp:運転状況返却
+deactivate cond
+tp -> tp:運転状況情報保持
 par each room
     loop first-room,last-room
-        tp -> cond:対象室の\n各機器運転状況問い合わせ
-        activate cond
-        cond --> tp:運転状況返却
-        deactivate cond
+        tp -> tp:対象室のすべての機器の\n運転状況を参照
         tp -> tp:エラー発生している機器に関しては\nランプを警告表示
 
 

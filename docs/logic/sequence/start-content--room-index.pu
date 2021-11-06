@@ -1,7 +1,7 @@
 @startuml start-content--room-index
 title start-content--room-index
 control 各室インデックス as ri
-entity "運転状況\n確認API" as cond
+entity "運転状況（各室）\n取得API" as cond
 
 activate ri
 ri -> cond:対象室の\n各機器運転状況問い合わせ
