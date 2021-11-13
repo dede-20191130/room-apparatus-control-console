@@ -1,5 +1,5 @@
 import React, { } from "react";
-import { IOperationConditionAll } from "../../../api/operation-condition";
+import { IOperationConditionAll } from "../../../api/operation-condition-api/operation-condition";
 import { useIsError } from "./alert-indicate";
 
 const operationConditionAll: IOperationConditionAll = {
