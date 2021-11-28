@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { parseRoomNm } from "../../../util/manage-room-info/room-name-parser"
+import { parseRoomNm } from "util/manage-room-info/room-name-parser"
 
 export const NavRoom = ({ roomId }: { roomId: string }) => {
     return (

@@ -4,14 +4,14 @@ import { tRoomCondInfos, useRoomCondInfos } from "./room-cond-info-hook"
 export const Top = () => {
     const roomCondIndicators = convInfosTo9ElemJSXes(useRoomCondInfos());
     return (
-        <>
+        <div>
             <div>
                 <h3>各室運転状況インジケータ</h3>
             </div>
             <div data-testid="indicator-box">
                 {roomCondIndicators}
             </div>
-        </>
+        </div>
     )
 }
 

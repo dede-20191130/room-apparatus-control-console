@@ -1,7 +1,9 @@
-import { parseRoomNm } from "../../../util/manage-room-info/room-name-parser"
+import { memo } from 'react'
+import isDeepEqual from 'fast-deep-equal/react'
+import { parseRoomNm } from "util/manage-room-info/room-name-parser";
 import { tRoomCondInfos } from "./room-cond-info-hook"
 
-export const RoomCondIndicator = ({ roomCondInfo }: { roomCondInfo: tRoomCondInfos[number] }) => {
+export const RoomCondIndicator = memo(({ roomCondInfo }: { roomCondInfo: tRoomCondInfos[number] }) => {
     return (
         <>
             <h4>{parseRoomNm(roomCondInfo.id)}</h4>
@@ -29,7 +31,7 @@ export const RoomCondIndicator = ({ roomCondInfo }: { roomCondInfo: tRoomCondInf
             </table>
         </>
     )
-}
+}, isDeepEqual)
 
 function createCondInfoSet(error: { isError: boolean } | undefined) {
     return error

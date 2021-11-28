@@ -1,5 +1,5 @@
+import { OperationConditionAllContext } from "context/oc-context";
 import { useContext } from "react";
-import { OperationConditionAllContext } from "../../../context/oc-context";
 
 export function useIsError() {
     const opeCondAlls = useContext(OperationConditionAllContext);

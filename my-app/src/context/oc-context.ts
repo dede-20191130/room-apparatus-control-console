@@ -1,4 +1,4 @@
+import { IOperationConditionSmmry } from "api/operation-condition-api/operation-condition";
 import React from "react";
-import { IOperationConditionAll } from '../api/operation-condition-api/operation-condition'
 
-export const OperationConditionAllContext = React.createContext<IOperationConditionAll>(null as unknown as IOperationConditionAll);
+export const OperationConditionAllContext = React.createContext<IOperationConditionSmmry>(null as unknown as IOperationConditionSmmry);

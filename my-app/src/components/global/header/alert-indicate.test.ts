@@ -1,8 +1,8 @@
 import React, { } from "react";
-import { IOperationConditionAll } from "../../../api/operation-condition-api/operation-condition";
+import { IOperationConditionSmmry } from "api/operation-condition-api/operation-condition";
 import { useIsError } from "./alert-indicate";
 
-const operationConditionAll: IOperationConditionAll = {
+const operationConditionAll: IOperationConditionSmmry = {
     rooms: [
         {
             id: "rTest001",

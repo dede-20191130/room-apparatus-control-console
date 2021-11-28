@@ -1,14 +1,13 @@
 import { render, screen } from "@testing-library/react";
-import React from "react";
-import { IOperationConditionAll } from "../../../api/operation-condition-api/operation-condition";
-import { IRoomsInfo } from "../../../api/rooms-info-api/rooms-info";
-import { OperationConditionAllContext } from "../../../context/oc-context";
-import { RoomsInfoContext } from "../../../context/ri-context";
+import { IOperationConditionSmmry } from "api/operation-condition-api/operation-condition";
+import { IRoomsInfo } from "api/rooms-info-api/rooms-info";
+import { OperationConditionAllContext } from "context/oc-context";
+import { RoomsInfoContext } from "context/ri-context";
 import { Top } from "./top";
 
 it('should display 5 table', () => {
 
-    const ocTestVal: IOperationConditionAll = {
+    const ocTestVal: IOperationConditionSmmry = {
         rooms: [
             { id: "room001", apparatus: [{ id: "test001", error: { isError: false } },] },
             { id: "room002", apparatus: [{ id: "test002", error: { isError: false } }, { id: "test003", error: { isError: false } },] },
@@ -43,7 +42,7 @@ it('should display 5 table', () => {
 
 });
 it('should display 9 table when over 9 elem data is passed', () => {
-    const ocTestVal: IOperationConditionAll = {
+    const ocTestVal: IOperationConditionSmmry = {
         rooms: [
             { id: "room001", apparatus: [{ id: "test001", error: { isError: false } },] },
             { id: "room002", apparatus: [{ id: "test002", error: { isError: false } }, { id: "test003", error: { isError: false } },] },

@@ -1,6 +1,6 @@
+import { OperationConditionAllContext } from "context/oc-context";
+import { RoomsInfoContext } from "context/ri-context";
 import { useContext } from "react";
-import { OperationConditionAllContext } from "../../../context/oc-context";
-import { RoomsInfoContext } from "../../../context/ri-context";
 
 export function useRoomCondInfos() {
     const ocCnxt = useContext(OperationConditionAllContext);

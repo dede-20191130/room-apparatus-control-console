@@ -1,5 +1,5 @@
+import { RoomsInfoContext } from "context/ri-context";
 import { useContext } from "react";
-import { RoomsInfoContext } from "../../../context/ri-context";
 
 export function useCreateList() {
     const roomsInfo = useContext(RoomsInfoContext);
