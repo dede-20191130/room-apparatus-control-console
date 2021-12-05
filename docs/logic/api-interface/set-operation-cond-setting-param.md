@@ -23,15 +23,15 @@ JSON
 
 |オブジェクト|パラメータ|型|内容|
 |--|--|--|--|
-|トップ|condition|配列|各設定情報|
-|condition|name|string|-|
-|condition|set-point|any|設定値|
+|トップ|conditions|配列|各設定情報|
+|conditions|name|string|-|
+|conditions|set-point|any|設定値|
 
 ### サンプル
 
 ```json
 {
-    "condition": [
+    "conditions": [
         {
             "name": "power-onoff",
             "set-point": true

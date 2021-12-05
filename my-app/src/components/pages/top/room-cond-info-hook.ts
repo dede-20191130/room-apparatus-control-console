@@ -1,9 +1,9 @@
-import { OperationConditionAllContext } from "context/oc-context";
+import { OperationConditionSmmyContext } from "context/oc-context";
 import { RoomsInfoContext } from "context/ri-context";
 import { useContext } from "react";
 
 export function useRoomCondInfos() {
-    const ocCnxt = useContext(OperationConditionAllContext);
+    const ocCnxt = useContext(OperationConditionSmmyContext);
     const riCnxt = useContext(RoomsInfoContext);
 
     return riCnxt.rooms.map((room) => {

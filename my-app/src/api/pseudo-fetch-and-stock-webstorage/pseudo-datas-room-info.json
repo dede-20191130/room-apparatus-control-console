@@ -1,0 +1,91 @@
+{
+    "roomNum5": {
+        "rooms": [
+            {
+                "id": "room101",
+                "apparatus": [
+                    {
+                        "id": "ap001",
+                        "name": "照明器具",
+                        "settingType": "lighting"
+                    },
+                    {
+                        "id": "ap002",
+                        "name": "エアコン",
+                        "settingType": "air-conditioner"
+                    }
+                ]
+            },
+            {
+                "id": "room102",
+                "apparatus": [
+                    {
+                        "id": "ap001",
+                        "name": "照明器具",
+                        "settingType": "lighting"
+                    },
+                    {
+                        "id": "ap002",
+                        "name": "床暖房",
+                        "settingType": "floor-heating"
+                    }
+                ]
+            },
+            {
+                "id": "room103",
+                "apparatus": [
+                    {
+                        "id": "ap001",
+                        "name": "照明器具",
+                        "settingType": "lighting"
+                    },
+                    {
+                        "id": "ap002",
+                        "name": "エアコン",
+                        "settingType": "air-conditioner"
+                    },
+                    {
+                        "id": "ap003",
+                        "name": "除湿機",
+                        "settingType": "dehumidifier"
+                    }
+                ]
+            },
+            {
+                "id": "room201",
+                "apparatus": [
+                    {
+                        "id": "ap001",
+                        "name": "エアコン",
+                        "settingType": "air-conditioner"
+                    }
+                ]
+            },
+            {
+                "id": "room202",
+                "apparatus": [
+                    {
+                        "id": "ap001",
+                        "name": "照明器具",
+                        "settingType": "lighting"
+                    },
+                    {
+                        "id": "ap002",
+                        "name": "エアコン",
+                        "settingType": "air-conditioner"
+                    },
+                    {
+                        "id": "ap003",
+                        "name": "加湿器",
+                        "settingType": "humidifier"
+                    },
+                    {
+                        "id": "ap004",
+                        "name": "送風機",
+                        "settingType": "blower"
+                    }
+                ]
+            }
+        ]
+    }
+}

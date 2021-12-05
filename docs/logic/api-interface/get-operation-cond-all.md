@@ -7,7 +7,7 @@
 
 ## パス
 
-`/api/ope-cond/rooms/errors`
+`/api/ope-cond/rooms`
 
 ## メソッド
 

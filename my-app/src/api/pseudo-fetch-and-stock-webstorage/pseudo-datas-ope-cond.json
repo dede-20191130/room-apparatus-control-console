@@ -1,0 +1,254 @@
+{
+    "roomNum5": {
+        "rooms": [
+            {
+                "id": "room101",
+                "apparatus": [
+                    {
+                        "id": "ap001",
+                        "conditions": [
+                            {
+                                "name": "power-onoff",
+                                "current": true,
+                                "setPoint": true
+                            },
+                            {
+                                "name": "illuminance",
+                                "current": 400,
+                                "setPoint": 500
+                            }
+                        ],
+                        "error": {
+                            "content": "",
+                            "isError": false
+                        }
+                    },
+                    {
+                        "id": "ap002",
+                        "conditions": [
+                            {
+                                "name": "power-onoff",
+                                "current": true,
+                                "setPoint": true
+                            },
+                            {
+                                "name": "temperture",
+                                "current": 27.5,
+                                "setPoint": 27
+                            }
+                        ],
+                        "error": {
+                            "content": "",
+                            "isError": false
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "room102",
+                "apparatus": [
+                    {
+                        "id": "ap001",
+                        "conditions": [
+                            {
+                                "name": "power-onoff",
+                                "current": true,
+                                "setPoint": true
+                            },
+                            {
+                                "name": "illuminance",
+                                "current": 420,
+                                "setPoint": 500
+                            }
+                        ],
+                        "error": {
+                            "content": "",
+                            "isError": false
+                        }
+                    },
+                    {
+                        "id": "ap002",
+                        "conditions": [
+                            {
+                                "name": "power-onoff",
+                                "current": true,
+                                "setPoint": true
+                            },
+                            {
+                                "name": "temperture",
+                                "current": 36.4,
+                                "setPoint": 36.6
+                            }
+                        ],
+                        "error": {
+                            "content": "",
+                            "isError": false
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "room103",
+                "apparatus": [
+                    {
+                        "id": "ap001",
+                        "conditions": [
+                            {
+                                "name": "power-onoff",
+                                "current": true,
+                                "setPoint": true
+                            },
+                            {
+                                "name": "illuminance",
+                                "current": 590,
+                                "setPoint": 600
+                            }
+                        ],
+                        "error": {
+                            "content": "",
+                            "isError": false
+                        }
+                    },
+                    {
+                        "id": "ap002",
+                        "conditions": [
+                            {
+                                "name": "power-onoff",
+                                "current": true,
+                                "setPoint": true
+                            },
+                            {
+                                "name": "temperture",
+                                "current": 24.4,
+                                "setPoint": 20
+                            }
+                        ],
+                        "error": {
+                            "content": "",
+                            "isError": false
+                        }
+                    },
+                    {
+                        "id": "ap003",
+                        "conditions": [
+                            {
+                                "name": "power-onoff",
+                                "current": true,
+                                "setPoint": true
+                            },
+                            {
+                                "name": "humidity",
+                                "current": 32.3,
+                                "setPoint": 25
+                            }
+                        ],
+                        "error": {
+                            "content": "",
+                            "isError": false
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "room201",
+                "apparatus": [
+                    {
+                        "id": "ap001",
+                        "conditions": [
+                            {
+                                "name": "power-onoff",
+                                "current": true,
+                                "setPoint": true
+                            },
+                            {
+                                "name": "temperture",
+                                "current": 10.2,
+                                "setPoint": 10
+                            }
+                        ],
+                        "error": {
+                            "content": "",
+                            "isError": false
+                        }
+                    }
+                ]
+            },
+            {
+                "id": "room202",
+                "apparatus": [
+                    {
+                        "id": "ap001",
+                        "conditions": [
+                            {
+                                "name": "power-onoff",
+                                "current": true,
+                                "setPoint": true
+                            },
+                            {
+                                "name": "illuminance",
+                                "current": 580,
+                                "setPoint": 600
+                            }
+                        ],
+                        "error": {
+                            "content": "",
+                            "isError": false
+                        }
+                    },
+                    {
+                        "id": "ap002",
+                        "conditions": [
+                            {
+                                "name": "power-onoff",
+                                "current": true,
+                                "setPoint": true
+                            },
+                            {
+                                "name": "temperture",
+                                "current": 25,
+                                "setPoint": 25
+                            }
+                        ],
+                        "error": {
+                            "content": "",
+                            "isError": false
+                        }
+                    },
+                    {
+                        "id": "ap003",
+                        "conditions": [
+                            {
+                                "name": "power-onoff",
+                                "current": true,
+                                "setPoint": true
+                            },
+                            {
+                                "name": "humidity",
+                                "current": 52.2,
+                                "setPoint": 25
+                            }
+                        ],
+                        "error": {
+                            "content": "",
+                            "isError": false
+                        }
+                    },
+                    {
+                        "id": "ap004",
+                        "conditions": [
+                            {
+                                "name": "power-onoff",
+                                "current": true,
+                                "setPoint": true
+                            }
+                        ],
+                        "error": {
+                            "content": "",
+                            "isError": false
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

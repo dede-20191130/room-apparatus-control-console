@@ -1,8 +1,8 @@
-import { OperationConditionAllContext } from "context/oc-context";
+import { OperationConditionSmmyContext } from "context/oc-context";
 import { useContext } from "react";
 
 export function useIsError() {
-    const opeCondAlls = useContext(OperationConditionAllContext);
+    const opeCondAlls = useContext(OperationConditionSmmyContext);
     // 配列からnullableな値の除去をtype情報に伝える
     // https://zenn.dev/lollipop_onl/articles/eoz-ts-non-nullable
     const apparatusArr = opeCondAlls.rooms

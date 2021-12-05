@@ -1,3 +1,5 @@
+import { doPseudoFetch } from "api/pseudo-fetch-and-stock-webstorage/pseudo-fetch-and-stock-webstorage";
+
 export interface IOperationConditionAll {
     rooms: IRoomOperationConditionAll[];
 }
@@ -47,22 +49,44 @@ export interface ICondSgl {
 
 }
 
+
+
 export async function fetchOperationConditionAll(): Promise<IOperationConditionAll> {
-    // todo 実装
-    return null as unknown as IOperationConditionAll;
+    const res = await doPseudoFetch("/api/ope-cond/rooms");
+    return (await res.json()) as IOperationConditionAll;
 }
 
 export function getOperationConditionSgl(roomId: string): IOperationConditionSgl | undefined {
     // todo 実装
+    // 本当にこれは必要？contextで渡せば必要ないかもしれない
     return null as unknown as IOperationConditionSgl;
 }
 
 export async function setOperationConditionSgl(roomId: string, cond: IApparatusOperationConditionSgl): Promise<number> {
-    // todo 実装
-    return null as unknown as number;
+    const res = await doPseudoFetch(
+        `/api/ope-cond/rooms/${roomId}/apparatus/${cond.id}`,
+        {
+            method: "PATCH",
+            body: JSON.stringify({
+                "conditions": cond.conditions.map(sglCond => ({
+                    "name": sglCond.name,
+                    "set-point": sglCond.setPoint,
+                }))
+            })
+        }
+    );
+    return res.status;
 }
 
 export async function recoverOpeError(roomId: string, apparatusId: string): Promise<number> {
-    // todo 実装
-    return null as unknown as number;
+    const res = await doPseudoFetch(
+        `/api/ope-cond/rooms/${roomId}/apparatus/${apparatusId}`,
+        {
+            method: "PATCH",
+            body: JSON.stringify({
+                "recover": true
+            })
+        }
+    );
+    return res.status;
 }

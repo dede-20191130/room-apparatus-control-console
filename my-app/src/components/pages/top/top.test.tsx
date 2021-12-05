@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { IOperationConditionSmmry } from "api/operation-condition-api/operation-condition";
 import { IRoomsInfo } from "api/rooms-info-api/rooms-info";
-import { OperationConditionAllContext } from "context/oc-context";
+import { OperationConditionSmmyContext } from "context/oc-context";
 import { RoomsInfoContext } from "context/ri-context";
 import { Top } from "./top";
 
@@ -27,11 +27,11 @@ it('should display 5 table', () => {
     }
 
     render(
-        <OperationConditionAllContext.Provider value={ocTestVal}>
+        <OperationConditionSmmyContext.Provider value={ocTestVal}>
             <RoomsInfoContext.Provider value={riTestVal}>
                 <Top></Top>
             </RoomsInfoContext.Provider>
-        </OperationConditionAllContext.Provider>
+        </OperationConditionSmmyContext.Provider>
     )
 
     // インジケータのボックス数
@@ -72,11 +72,11 @@ it('should display 9 table when over 9 elem data is passed', () => {
     }
 
     render(
-        <OperationConditionAllContext.Provider value={ocTestVal}>
+        <OperationConditionSmmyContext.Provider value={ocTestVal}>
             <RoomsInfoContext.Provider value={riTestVal}>
                 <Top></Top>
             </RoomsInfoContext.Provider>
-        </OperationConditionAllContext.Provider>
+        </OperationConditionSmmyContext.Provider>
     )
 
     // インジケータのボックス数
