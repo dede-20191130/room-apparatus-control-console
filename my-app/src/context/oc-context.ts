@@ -1,4 +1,6 @@
-import { IOperationConditionSmmry } from "api/operation-condition-api/operation-condition";
+import { IOperationConditionAll, IOperationConditionSmmry } from "api/operation-condition-api/operation-condition";
 import React from "react";
 
-export const OperationConditionSmmyContext = React.createContext<IOperationConditionSmmry>(null as unknown as IOperationConditionSmmry);
+export const OperationConditionAllContext = React.createContext<IOperationConditionAll | null>(null);
+export const OperationConditionSmmyContext = React.createContext<IOperationConditionSmmry | null>(null);
+export const updateOCsContext = React.createContext<(() => Promise<void>) | null>(null);

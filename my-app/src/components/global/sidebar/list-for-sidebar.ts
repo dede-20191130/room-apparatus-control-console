@@ -3,5 +3,5 @@ import { useContext } from "react";
 
 export function useCreateList() {
     const roomsInfo = useContext(RoomsInfoContext);
-    return roomsInfo.rooms.map(room => room.id);
+    return roomsInfo?.rooms?.map(room => room.id);
 }

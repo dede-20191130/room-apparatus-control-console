@@ -9,7 +9,7 @@ export const Sidebar = () => {
             <ul>
                 <NavTop></NavTop>
                 {roomIds && roomIds.map((roomId) => {
-                    return <NavRoom roomId={roomId}></NavRoom>
+                    return <NavRoom key={roomId} roomId={roomId}></NavRoom>
                 })}
 
             </ul>

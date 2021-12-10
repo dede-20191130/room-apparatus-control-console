@@ -2,7 +2,6 @@ import { memo } from 'react'
 import isDeepEqual from 'fast-deep-equal/react'
 import { IRoomRoomsInfo } from "api/rooms-info-api/rooms-info";
 import { LinkDisabledOnActive } from "components/ui/link/link-disabled-on-active";
-import { RoomsInfoContext } from "context/ri-context"
 import { useContext } from "react"
 import { getApparatusNames } from "./apparatus-names"
 

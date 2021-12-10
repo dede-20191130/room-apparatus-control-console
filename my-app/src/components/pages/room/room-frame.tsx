@@ -1,4 +1,5 @@
-import { getOperationConditionSgl } from "api/operation-condition-api/operation-condition"
+import { IOperationConditionSgl } from "api/operation-condition-api/operation-condition"
+import { OperationConditionAllContext } from "context/oc-context"
 import { RoomsInfoContext } from "context/ri-context"
 import React, { useContext } from "react"
 import { Route, Routes } from "react-router"
@@ -10,11 +11,17 @@ import { RoomIndex } from "./room-index/room-index"
 
 export const RoomIdContext = React.createContext("");
 
+function useOperationConditionSgl(roomId: string): IOperationConditionSgl | null {
+    const opeCondAll = useContext(OperationConditionAllContext);
+    const apparatus = opeCondAll?.rooms?.find(room => room.id === roomId)?.apparatus;
+    return apparatus ? { apparatus: apparatus } : null;
+}
+
 export const RoomFrame = ({ roomId }: { roomId: string }) => {
     // フレームコンポーネントのレベルで各子コンポーネントに渡す情報の問い合わせを行う
     //// 配下のコンポーネントではパラメータで渡されたデータのみ取り扱う
-    const myroomInfo = useContext(RoomsInfoContext).rooms.find(room => room.id === roomId);
-    const myOpeCond = getOperationConditionSgl(roomId);
+    const myroomInfo = useContext(RoomsInfoContext)?.rooms?.find(room => room.id === roomId);
+    const myOpeCond = useOperationConditionSgl(roomId);
     const integratedDataset = (myroomInfo && myOpeCond) ? getIntegratedDataset(myroomInfo, myOpeCond) : null;
     return (
         <RoomIdContext.Provider value={roomId}>

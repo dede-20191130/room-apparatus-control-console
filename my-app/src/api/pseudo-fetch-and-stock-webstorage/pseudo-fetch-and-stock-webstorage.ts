@@ -41,7 +41,6 @@ export async function doPseudoFetch(input: string, init?: RequestInit | undefine
                         case "rooms/":
                             // 部屋情報を返却
                             return makeResponce(200, JSON.parse(sessionStorage.getItem("roomInfo") || "null") as IRoomsInfo);
-                            break;
 
                     }
                     break;
@@ -51,7 +50,6 @@ export async function doPseudoFetch(input: string, init?: RequestInit | undefine
                         case "rooms/":
                             // 運転状況（全室全機器）を返却
                             return makeResponce(200, JSON.parse(sessionStorage.getItem("opeCondInfo") || "null") as IOperationConditionAll);
-                            break;
 
                     }
                     break;

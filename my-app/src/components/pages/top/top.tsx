@@ -1,7 +1,9 @@
+import { useUpdateOCWhenInitialied } from "components/hooks/oc-management/update-oc";
 import { RoomCondIndicator } from "./room-cond-indicator";
 import { tRoomCondInfos, useRoomCondInfos } from "./room-cond-info-hook"
 
 export const Top = () => {
+    useUpdateOCWhenInitialied();
     const roomCondIndicators = convInfosTo9ElemJSXes(useRoomCondInfos());
     return (
         <div>
@@ -15,14 +17,16 @@ export const Top = () => {
     )
 }
 
-function convInfosTo9ElemJSXes(infos: tRoomCondInfos) {
+function convInfosTo9ElemJSXes(infos: tRoomCondInfos | null) {
 
     // infoオブジェクトをJSXにマッピング
-    const roomCondIndicators = infos.map(info => (
+    const roomCondIndicators = infos?.map(info => (
         <div key={info.id}>
             <RoomCondIndicator roomCondInfo={info}></RoomCondIndicator>
         </div>
     ));
+
+    if (!roomCondIndicators) return null;
 
     // 最大表示数は9
     if (roomCondIndicators.length > 9) {

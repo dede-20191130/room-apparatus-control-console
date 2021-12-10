@@ -3,8 +3,10 @@ import isDeepEqual from 'fast-deep-equal/react'
 import { tIntegratedDataset } from "../integrated-apparatus-dara-set"
 import { CurrentSettingArea } from "./cs-area"
 import { OpeErrorArea } from "./ope-err-area"
+import {useUpdateOCWhenPathnameChanged } from "components/hooks/oc-management/update-oc"
 
 export const RoomApparatus = memo(({ integratedData }: { integratedData: tIntegratedDataset[number] }) => {
+    useUpdateOCWhenPathnameChanged();
     return (
         <div>
             <div>

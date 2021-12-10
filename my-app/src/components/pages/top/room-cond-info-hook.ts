@@ -5,8 +5,8 @@ import { useContext } from "react";
 export function useRoomCondInfos() {
     const ocCnxt = useContext(OperationConditionSmmyContext);
     const riCnxt = useContext(RoomsInfoContext);
-
-    return riCnxt.rooms.map((room) => {
+    if(!(ocCnxt && riCnxt))return null;
+    return riCnxt?.rooms?.map((room) => {
         return {
             "id": room.id,
             "apparatus": room.apparatus?.map(apparatus => {
@@ -23,4 +23,4 @@ export function useRoomCondInfos() {
         }
     })
 }
-export type tRoomCondInfos = ReturnType<typeof useRoomCondInfos>;
+export type tRoomCondInfos = NonNullable<ReturnType<typeof useRoomCondInfos>>;

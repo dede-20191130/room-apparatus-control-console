@@ -56,11 +56,6 @@ export async function fetchOperationConditionAll(): Promise<IOperationConditionA
     return (await res.json()) as IOperationConditionAll;
 }
 
-export function getOperationConditionSgl(roomId: string): IOperationConditionSgl | undefined {
-    // todo 実装
-    // 本当にこれは必要？contextで渡せば必要ないかもしれない
-    return null as unknown as IOperationConditionSgl;
-}
 
 export async function setOperationConditionSgl(roomId: string, cond: IApparatusOperationConditionSgl): Promise<number> {
     const res = await doPseudoFetch(
