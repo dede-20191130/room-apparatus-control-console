@@ -1,4 +1,5 @@
 import { setOperationConditionSgl } from "api/operation-condition-api/operation-condition";
+import { updateOCsContext } from "context/oc-context";
 import { useContext } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { tIntegratedDataset } from "../integrated-apparatus-dara-set";
@@ -15,6 +16,7 @@ export interface IFormValues {
 
 export const SettingArea = ({ onCmplBtnClick, integratedData }: { onCmplBtnClick: () => void, integratedData: tIntegratedDataset[number] }) => {
     const roomId = useContext(RoomIdContext);
+    const updateOCs = useContext(updateOCsContext);
     const { handleSubmit, control, register, formState: { errors } } = useForm<IFormValues>({
         defaultValues: {
             cond: integratedData.conditions.map(cond => ({ setPoint: cond.setPoint }))
@@ -38,7 +40,8 @@ export const SettingArea = ({ onCmplBtnClick, integratedData }: { onCmplBtnClick
                 }
             })
         }
-        await setOperationConditionSgl(roomId, mergedIntegratedData)
+        await setOperationConditionSgl(roomId, mergedIntegratedData);
+        if (updateOCs) updateOCs();
         onCmplBtnClick();
     };
     return (

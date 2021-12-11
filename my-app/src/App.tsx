@@ -12,7 +12,7 @@ import { RoomFrame } from 'components/pages/room/room-frame';
 
 const FETCH_INTERVAL = (process.env.REACT_APP_FETCH_INTERVAL
   ? parseFloat(process.env.REACT_APP_FETCH_INTERVAL)
-  : 30 * 1000) as number;
+  : 10 * 1000) as number;
 
 function getOCSmmy(OCAll: IOperationConditionAll | null): IOperationConditionSmmry | null {
   if (!OCAll) return null;
@@ -57,6 +57,7 @@ function useOpeCondObj() {
     }
   }
   function updateOCSmmy() {
+    console.log("updateOCSmmy-called")
     const createdOCSmmy = getOCSmmy(OCAll);
     //// deep equal成立しないならば更新
     if (createdOCSmmy && !isDeepEqual(OCSmmy, createdOCSmmy)) setOCSmmy(createdOCSmmy);
@@ -65,7 +66,6 @@ function useOpeCondObj() {
   async function updateOCs() {
     console.log("updateOCs-called")
     await updateOCAll();
-    updateOCSmmy();
   }
 
   useEffect(() => {

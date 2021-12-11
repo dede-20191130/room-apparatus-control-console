@@ -1,0 +1,16 @@
+{
+    "settingItem": [
+        {
+            "name": "illuminance",
+            "digitNum": 0
+        },
+        {
+            "name": "temperture",
+            "digitNum": 1
+        },
+        {
+            "name": "humidity",
+            "digitNum": 1
+        }
+    ]
+}

@@ -2,6 +2,7 @@ import { IOperationConditionAll } from "api/operation-condition-api/operation-co
 import { IRoomsInfo } from "api/rooms-info-api/rooms-info";
 import roomInfo from './pseudo-datas-room-info.json'
 import opeCond from './pseudo-datas-ope-cond.json'
+import setPointReflectionParam from './pseudo-datas-reflect-set-point.json'
 import { parseSafely } from "util/json/json-utils";
 
 export function getPseudoDataRoomInfo(): IRoomsInfo {
@@ -48,6 +49,8 @@ export async function doPseudoFetch(input: string, init?: RequestInit | undefine
                     switch (apiDetail) {
                         case "rooms":
                         case "rooms/":
+                            // 値の返却前に、機器ごとに現在値を設定値に近づける
+                            reflectSetPoint();
                             // 運転状況（全室全機器）を返却
                             return makeResponce(200, JSON.parse(sessionStorage.getItem("opeCondInfo") || "null") as IOperationConditionAll);
 
@@ -130,4 +133,26 @@ function makeResponce<T>(statusCode: number, jsonRtn: T) {
             return jsonRtn;
         }
     }
+}
+
+function reflectSetPoint() {
+    const opeCondInfo = JSON.parse(sessionStorage.getItem("opeCondInfo") || "null") as IOperationConditionAll;
+    // 機器ごとに現在値を設定値に近づける
+    for (const room of opeCondInfo.rooms) {
+        if (!room.apparatus) continue;
+        for (const appa of room.apparatus) {
+            for (const cond of appa.conditions) {
+                const paramForReflect = setPointReflectionParam.settingItem.find(si => si.name === cond.name);
+                if (!paramForReflect) continue;
+                cond.current = getSetPointReflectedVal(cond.current as number, cond.setPoint as number, paramForReflect.digitNum);
+            }
+        }
+    }
+    sessionStorage.setItem("opeCondInfo", JSON.stringify(opeCondInfo));
+}
+
+function getSetPointReflectedVal(curerntVal: number, setPoint: number, digitNum: number) {
+    const reflectedVal = curerntVal + (Math.random() / 2) * (setPoint - curerntVal);
+    const perturbingVal = ((Math.random() - 0.5) / 3) * (1 / 10 ** (digitNum - 1));
+    return Math.round((reflectedVal + perturbingVal) * (10 ** digitNum)) / 10 ** digitNum;
 }
