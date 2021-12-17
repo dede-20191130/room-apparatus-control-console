@@ -11,7 +11,7 @@ export const CurrentArea = ({ onCngbtnClick, integratedData }: { onCngbtnClick: 
                 <tbody>
                     {integratedData.conditions.map(cond => {
                         const csInfo = csInfos.find(info => info.name === cond.name);
-                        if (!csInfo) return;
+                        if (!csInfo) return null;
                         return (
                             <tr key={cond.name}>
                                 <td>{csInfo.logiName}</td>

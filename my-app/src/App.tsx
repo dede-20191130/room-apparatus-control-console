@@ -9,6 +9,7 @@ import { Route, Routes } from 'react-router';
 import isDeepEqual from 'fast-deep-equal/react'
 import { OperationConditionAllContext, OperationConditionSmmyContext, updateOCsContext } from 'context/oc-context';
 import { RoomFrame } from 'components/pages/room/room-frame';
+import { createGlobalStyle } from 'styled-components';
 
 const FETCH_INTERVAL = (process.env.REACT_APP_FETCH_INTERVAL
   ? parseFloat(process.env.REACT_APP_FETCH_INTERVAL)
@@ -88,12 +89,41 @@ function useOpeCondObj() {
   return { OCAll, OCSmmy, updateOCs };
 }
 
+const GlobalStyle = createGlobalStyle`
+*, *:before, *:after{
+  box-sizing:border-box;
+}
+body{
+  margin-top:70px;
+  background-color:#222222;
+  color:white;
+  font-family:"Meiryo",'Times New Roman', Times, serif;
+  
+}
+a{
+  &:link{
+    color: #2a9fd6;
+    text-decoration: none;
+  }
+  &:visited{
+    color: #2a9fd6;
+    
+  }
+  &:hover{
+    color: #2a9fd6;
+    text-decoration: underline;
+  }
+}
+`
+
+
 function App() {
   const roomInfo = useRoomInfo();
   const OpeCondObj = useOpeCondObj();
   return (
 
     <div>
+      <GlobalStyle></GlobalStyle>
       <RoomsInfoContext.Provider value={roomInfo}>
         <OperationConditionAllContext.Provider value={OpeCondObj.OCAll}>
           <OperationConditionSmmyContext.Provider value={OpeCondObj.OCSmmy}>

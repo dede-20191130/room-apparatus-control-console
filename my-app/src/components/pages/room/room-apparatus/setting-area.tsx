@@ -52,7 +52,7 @@ export const SettingArea = ({ onCmplBtnClick, integratedData }: { onCmplBtnClick
                     <tbody>
                         {conditions.map((cond, idx) => {
                             const csInfo = csInfos.find(info => info.name === cond.name);
-                            if (!csInfo) return;
+                            if (!csInfo) return null;
                             return (
                                 <tr key={cond.id}>
                                     <td>{csInfo.logiName}</td>
