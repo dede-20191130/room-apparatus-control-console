@@ -2,7 +2,7 @@ import { setOperationConditionSgl } from "api/operation-condition-api/operation-
 import { ThemedButton } from "components/ui/button/themed-button";
 import { ThemedTable } from "components/ui/table/themed-table";
 import { updateOCsContext } from "context/oc-context";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { tIntegratedDataset } from "../integrated-apparatus-dara-set";
 import { RoomIdContext } from "../room-frame";
@@ -46,6 +46,11 @@ export const SettingArea = ({ onCmplBtnClick, integratedData }: { onCmplBtnClick
         if (updateOCs) updateOCs();
         onCmplBtnClick();
     };
+
+    const cancelSubmit = () => {
+        onCmplBtnClick();
+    }
+
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
@@ -66,7 +71,7 @@ export const SettingArea = ({ onCmplBtnClick, integratedData }: { onCmplBtnClick
                     </tbody>
                 </ThemedTable>
                 <ButtonSection>
-                    <ThemedButton disabled>設定変更</ThemedButton>
+                    <ThemedButton type="button" backgroundColor="#ff17d894" onClick={cancelSubmit}>キャンセル</ThemedButton>
                     <ThemedButton as="input" type="submit" value="完了"></ThemedButton>
                 </ButtonSection>
 
