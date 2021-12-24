@@ -1,3 +1,5 @@
+import { ThemedButton } from "components/ui/button/themed-button";
+import { ThemedTable } from "components/ui/table/themed-table";
 import { tIntegratedDataset } from "../integrated-apparatus-dara-set";
 import { ButtonSection } from "./cs-area-button-section";
 import { csInfos } from "./cs-info-for-tbl";
@@ -6,7 +8,7 @@ import { THead } from "./cs-tbl-thead";
 export const CurrentArea = ({ onCngbtnClick, integratedData }: { onCngbtnClick: () => void, integratedData: tIntegratedDataset[number] }) => {
     return (
         <div>
-            <table>
+            <ThemedTable>
                 <THead></THead>
                 <tbody>
                     {integratedData.conditions.map(cond => {
@@ -21,10 +23,10 @@ export const CurrentArea = ({ onCngbtnClick, integratedData }: { onCngbtnClick: 
                         )
                     })}
                 </tbody>
-            </table>
+            </ThemedTable>
             <ButtonSection>
-                <button onClick={onCngbtnClick}>設定変更</button>
-                <button disabled>完了</button>
+                <ThemedButton onClick={onCngbtnClick}>設定変更</ThemedButton>
+                <ThemedButton disabled>完了</ThemedButton>
             </ButtonSection>
         </div>
     )

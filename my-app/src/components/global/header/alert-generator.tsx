@@ -1,4 +1,5 @@
 import { IOperationConditionAll } from "api/operation-condition-api/operation-condition";
+import { ThemedButton } from "components/ui/button/themed-button";
 import { updateOCsContext } from "context/oc-context"
 import { useContext } from "react"
 import { useIsError } from "./alert-indicate";
@@ -71,7 +72,7 @@ export const AlertGenerator = () => {
 
     return (
         <div>
-            <button disabled={isError} onClick={() => handleClick()}>エラー発生（試験）</button>
+            <ThemedButton disabled={isError} onClick={() => handleClick()}>エラー発生（試験）</ThemedButton>
         </div >
     )
 }

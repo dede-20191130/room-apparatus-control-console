@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom"
+import { LinkClassifiedOnActive } from "components/ui/link/link-classified-on-active"
 
 export const NavTop = () => {
     return (
         <li>
-            <Link to="/top">TOP</Link>
+            <LinkClassifiedOnActive to="/top">TOP</LinkClassifiedOnActive>
         </li>
     )
 }

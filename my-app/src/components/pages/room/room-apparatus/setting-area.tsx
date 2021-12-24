@@ -1,4 +1,6 @@
 import { setOperationConditionSgl } from "api/operation-condition-api/operation-condition";
+import { ThemedButton } from "components/ui/button/themed-button";
+import { ThemedTable } from "components/ui/table/themed-table";
 import { updateOCsContext } from "context/oc-context";
 import { useContext } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
@@ -47,7 +49,7 @@ export const SettingArea = ({ onCmplBtnClick, integratedData }: { onCmplBtnClick
     return (
         <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <table>
+                <ThemedTable>
                     <THead></THead>
                     <tbody>
                         {conditions.map((cond, idx) => {
@@ -62,10 +64,10 @@ export const SettingArea = ({ onCmplBtnClick, integratedData }: { onCmplBtnClick
                             )
                         })}
                     </tbody>
-                </table>
+                </ThemedTable>
                 <ButtonSection>
-                    <button disabled>設定変更</button>
-                    <input type="submit" value="完了"></input>
+                    <ThemedButton disabled>設定変更</ThemedButton>
+                    <ThemedButton as="input" type="submit" value="完了"></ThemedButton>
                 </ButtonSection>
 
             </form>

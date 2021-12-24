@@ -10,7 +10,7 @@ export const OpeErrorArea = ({ integratedData }: { integratedData: tIntegratedDa
     const updateOCs = useContext(updateOCsContext);
     const handleClick = async () => {
         await recoverOpeError(roomId, integratedData.id);
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, Math.random() * 3000));
         if (updateOCs) await updateOCs();
     }
     return (

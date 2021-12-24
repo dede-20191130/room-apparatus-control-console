@@ -9,7 +9,7 @@ import { Route, Routes } from 'react-router';
 import isDeepEqual from 'fast-deep-equal/react'
 import { OperationConditionAllContext, OperationConditionSmmyContext, updateOCsContext } from 'context/oc-context';
 import { RoomFrame } from 'components/pages/room/room-frame';
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const FETCH_INTERVAL = (process.env.REACT_APP_FETCH_INTERVAL
   ? parseFloat(process.env.REACT_APP_FETCH_INTERVAL)
@@ -52,20 +52,17 @@ function useOpeCondObj() {
     const fecthedOCAllInterval = await fetchOperationConditionAll();
     //// deep equal成立しないならば更新
     if (!isDeepEqual(OCAllRef.current, fecthedOCAllInterval)) {
-      console.log("update-OCALL")
       OCAllRef.current = fecthedOCAllInterval;
       setOCAll(fecthedOCAllInterval);
     }
   }
   function updateOCSmmy() {
-    console.log("updateOCSmmy-called")
     const createdOCSmmy = getOCSmmy(OCAll);
     //// deep equal成立しないならば更新
     if (createdOCSmmy && !isDeepEqual(OCSmmy, createdOCSmmy)) setOCSmmy(createdOCSmmy);
   }
 
   async function updateOCs() {
-    console.log("updateOCs-called")
     await updateOCAll();
   }
 
@@ -76,7 +73,6 @@ function useOpeCondObj() {
       OCAllRef.current = fecthedOCAll;
       setOCAll(fecthedOCAll);
       setInterval(async () => {
-        console.log("setInterval-async")
         // 運転状況データ問い合わせ（30秒ごと）
         await updateOCAll();
       }, FETCH_INTERVAL);
@@ -94,8 +90,9 @@ const GlobalStyle = createGlobalStyle`
   box-sizing:border-box;
 }
 body{
+  margin:0;
   margin-top:70px;
-  background-color:#222222;
+  background-color:#000000;
   color:white;
   font-family:"Meiryo",'Times New Roman', Times, serif;
   
@@ -110,12 +107,19 @@ a{
     
   }
   &:hover{
-    color: #2a9fd6;
+    color: #dff5ff;
     text-decoration: underline;
   }
 }
 `
+const FlexContainerDiv = styled.div`
+display:flex;
+min-height:calc(100vh - 70px);
+`
 
+const StyledMain = styled.main`
+width:calc(100vw - 200px - 16px);
+`
 
 function App() {
   const roomInfo = useRoomInfo();
@@ -129,15 +133,19 @@ function App() {
           <OperationConditionSmmyContext.Provider value={OpeCondObj.OCSmmy}>
             <updateOCsContext.Provider value={OpeCondObj.updateOCs}>
               <Header></Header>
-              <Sidebar></Sidebar>
-              <Routes>
-                <Route path="/top" element={<Top></Top>}></Route>
-                {roomInfo?.rooms?.map(room => {
-                  return (
-                    <Route key={room.id} path={`/${room.id}/*`} element={<RoomFrame roomId={room.id}></RoomFrame>}></Route>
-                  )
-                })}
-              </Routes>
+              <FlexContainerDiv>
+                <Sidebar></Sidebar>
+                <StyledMain>
+                  <Routes>
+                    <Route path="/top" element={<Top></Top>}></Route>
+                    {roomInfo?.rooms?.map(room => {
+                      return (
+                        <Route key={room.id} path={`/${room.id}/*`} element={<RoomFrame roomId={room.id}></RoomFrame>}></Route>
+                      )
+                    })}
+                  </Routes>
+                </StyledMain>
+              </FlexContainerDiv>
             </updateOCsContext.Provider>
           </OperationConditionSmmyContext.Provider>
         </OperationConditionAllContext.Provider>

@@ -17,6 +17,9 @@ export function useUpdateOCWhenPathnameChanged() {
     // 運転状況を更新する
     //// トリガー：URL変更時
     useEffect(() => {
-        if (updateOCs) updateOCs();
+        (async () => {
+            await new Promise(resolve => setTimeout(resolve, Math.random() * 3000));
+            if (updateOCs) await updateOCs();
+        })();
     }, [location.pathname])
 }

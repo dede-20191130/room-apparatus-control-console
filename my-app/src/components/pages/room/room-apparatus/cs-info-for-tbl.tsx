@@ -31,7 +31,7 @@ export const csInfos: tCsInfo[] = [
     {
         name: "temperture",
         logiName: "温度",
-        attachDisplayNm: (val: number) => `${val} °C`,
+        attachDisplayNm: (val: number) => `${Number(val).toFixed(1)} °C`,
         getSettingCmpnt: ({ register, errors, index, value }) => (
             <Temperture register={register} errors={errors}
                 index={index} value={value}></Temperture>
@@ -40,7 +40,7 @@ export const csInfos: tCsInfo[] = [
     {
         name: "humidity",
         logiName: "湿度",
-        attachDisplayNm: (val: number) => `${val} %`,
+        attachDisplayNm: (val: number) => `${Number(val).toFixed(1)} %`,
         getSettingCmpnt: ({ register, errors, index, value }) => (
             <Humidity register={register} errors={errors}
                 index={index} value={value}></Humidity>
