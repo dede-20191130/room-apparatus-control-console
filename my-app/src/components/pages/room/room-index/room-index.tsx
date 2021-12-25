@@ -17,7 +17,7 @@ export const RoomIndex = memo(
                 {appaConds?.map(cond => (
                     <div key={cond.id}>
                         <p>{cond.name}</p>
-                        <p>{cond.isError}</p>
+                        <p>{cond.isError + ""}</p>
                     </div>
                 ))}
             </div>

@@ -141,7 +141,14 @@ function reflectSetPoint() {
     for (const room of opeCondInfo.rooms) {
         if (!room.apparatus) continue;
         for (const appa of room.apparatus) {
-            for (const cond of appa.conditions) {
+            const powerCond = appa.conditions.find(cond => cond.name === "power-onoff");
+            if (powerCond) {
+                powerCond.current = powerCond.setPoint;
+                // 電源OFFならば他項目の現在値変更しない
+                if (!powerCond.setPoint) continue;
+            }
+            const otherConds = appa.conditions.filter(cond => cond.name !== "power-onoff");
+            for (const cond of otherConds) {
                 const paramForReflect = setPointReflectionParam.settingItem.find(si => si.name === cond.name);
                 if (!paramForReflect) continue;
                 cond.current = getSetPointReflectedVal(cond.current as number, cond.setPoint as number, paramForReflect.digitNum);

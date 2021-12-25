@@ -7,11 +7,12 @@ interface IToggleCheckboxPackageProps {
 
 const ContainerSpan = styled.span<IToggleCheckboxPackageProps>`
 --toggle-color-button-criteria-len:${props => `${props.toggleLen || 75}px`};
+display: inline-block;
 position: relative;
 width: var(--toggle-color-button-criteria-len);
 height: calc(var(--toggle-color-button-criteria-len) / 1.78);
 margin: auto;
-display: inline-block;
+vertical-align: middle;
 & > label{
     width: 100%;
     height: 100%;

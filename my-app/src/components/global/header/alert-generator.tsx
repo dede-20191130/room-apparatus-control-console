@@ -7,8 +7,7 @@ import { useIsError } from "./alert-indicate";
 // エラー同時発生最大数
 const MAX_CONCURRENT_ERR_NUM = 3
 // エラー文言
-const ERR_TXT = `
-（試験用エラーです）
+const ERR_TXT = `（試験用エラーです）
 機器にエラーが発生しました。
 復旧ボタンにより機器を正常復旧してください。
 `
