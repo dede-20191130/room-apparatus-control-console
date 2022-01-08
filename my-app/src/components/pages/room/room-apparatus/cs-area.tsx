@@ -15,8 +15,6 @@ export const CurrentSettingArea = ({ integratedData }: { integratedData: tIntegr
 
     // 機器ページ変更時に設定値変更モードを強制終了
     useEffect(() => {
-        console.log(roomId)
-        console.log(integratedData.id)
         setUnEditable();
     }, [roomId, integratedData.id])
 
