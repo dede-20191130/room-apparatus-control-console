@@ -239,12 +239,13 @@ describe('PATCH method', () => {
     });
     it('should recover error on the apparatus', () => {
         const opeCondWithErr = opeCondInfoForMock;
-        opeCondWithErr.rooms.find(rm => rm.id === "room102")
+        let insertedErr = opeCondWithErr.rooms.find(rm => rm.id === "room102")
             ?.apparatus.find(ap => ap.id === "ap001")
-            ?.error != {
+            ?.error;
+        if (insertedErr) insertedErr = {
             isError: true,
             content: "some error"
-        }
+        };
         spyGetPseudoDataOpeCond.mockClear();
         spyGetPseudoDataOpeCond.mockImplementation(() => {
             return opeCondWithErr;

@@ -25,7 +25,7 @@ beforeEach(() => {
 it('should decompose prop data and show', () => {
     expect(screen.getByText("スイッチ").nextElementSibling?.textContent).toBe("ON");
     expect(screen.getByText("スイッチ").nextElementSibling?.nextElementSibling?.textContent).toBe("OFF");
-    expect(screen.getByText("温度").nextElementSibling?.textContent).toBe("32 °C");
+    expect(screen.getByText("温度").nextElementSibling?.textContent).toBe("32.0 °C");
     expect(screen.getByText("温度").nextElementSibling?.nextElementSibling?.textContent).toBe("34.6 °C");
 });
 it('should fire parent component handler', () => {

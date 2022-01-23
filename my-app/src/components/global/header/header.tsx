@@ -24,11 +24,6 @@ interface IFlexContainerDivProps {
     readonly justify?: string;
 }
 
-interface HTMLEvent<T extends EventTarget> extends Event {
-    target: T;
-    currentTarget: T;
-}
-
 const flexContainerCss = css<IFlexContainerDivProps>`
 display:flex;
 align-items:center;
@@ -128,12 +123,6 @@ export const Header = ({ setIsActiveOfSidebar }: {
     const [isOpenAlertArea, setIsOpenAlertArea] = useState(false);
     const areaNodeRef = useRef<HTMLDivElement>(null);
 
-    const toggleAlertArea = useCallback(() => {
-        setIsOpenAlertArea(true);
-        setTimeout(() => {
-            document.addEventListener("click", documentClickHandlerForAlertArea)
-        }, 100);
-    }, [setIsOpenAlertArea]);
 
     const documentClickHandlerForAlertArea = useCallback((ev: MouseEvent) => {
         if (areaNodeRef.current === null) return;
@@ -142,7 +131,14 @@ export const Header = ({ setIsActiveOfSidebar }: {
         setIsOpenAlertArea(false);
         document.removeEventListener('click', documentClickHandlerForAlertArea)
 
-    }, [setIsOpenAlertArea, areaNodeRef.current])
+    }, [setIsOpenAlertArea])
+
+    const toggleAlertArea = useCallback(() => {
+        setIsOpenAlertArea(true);
+        setTimeout(() => {
+            document.addEventListener("click", documentClickHandlerForAlertArea)
+        }, 100);
+    }, [setIsOpenAlertArea, documentClickHandlerForAlertArea]);
 
     return (
         <StyledTagOfHeader className="nav-header">

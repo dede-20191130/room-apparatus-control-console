@@ -11,8 +11,8 @@ const testDataRoomInfo: IRoomsInfo = {
         {
             id: "room123",
             apparatus: [
-                { id: "test-app-01", name: "照明器具", settingType: "" },
-                { id: "test-app-02", name: "除湿機", settingType: "" },
+                { id: "test-app-01", name: "照明器具", settingType: "air-conditioner" },
+                { id: "test-app-02", name: "除湿機", settingType: "blower" },
             ]
         }
     ]

@@ -16,7 +16,7 @@ export const CurrentSettingArea = ({ integratedData }: { integratedData: tIntegr
     // 機器ページ変更時に設定値変更モードを強制終了
     useEffect(() => {
         setUnEditable();
-    }, [roomId, integratedData.id])
+    }, [roomId, integratedData.id, setUnEditable])
 
     return (
         <StickyHeaderPanelDiv baseColor="green" headFont={18}>
