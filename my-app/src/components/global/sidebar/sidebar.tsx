@@ -1,11 +1,29 @@
+import { mediaQueries } from "components/design/media-query-setting";
 import styled from "styled-components";
 import { useCreateList } from "./list-for-sidebar"
 import { NavRoom } from "./nav-room";
 import { NavTop } from "./nav-top";
 
 const StyledNav = styled.nav`
+position:fixed;
+left:-200px;
+z-index:2;
+visibility:collapse;
 width:200px;
 background-color:#222222;
+transition: left 0.3s ease-out 0s,visibility 0s linear 0.3s;
+&.active{
+    display:block;
+    left:0;
+    visibility:visible;
+    transition: left 0.3s ease-out 0s;
+}
+${mediaQueries("md")`
+position:static;
+visibility:visible;
+transition:none;
+`}
+
 `
 
 const StyledUl = styled.ul`
@@ -41,10 +59,10 @@ list-style:none;
 }
 `
 
-export const Sidebar = () => {
+export const Sidebar = ({ isActiveOfSidebar }: { isActiveOfSidebar: boolean }) => {
     const roomIds = useCreateList();
     return (
-        <StyledNav>
+        <StyledNav className={isActiveOfSidebar ? "active" : ""}>
             <StyledUl>
                 <NavTop></NavTop>
                 {roomIds && roomIds.map((roomId) => {

@@ -1,6 +1,7 @@
+import { mediaQueries } from "components/design/media-query-setting";
 import styled from "styled-components";
 
-interface IThemedButtonProps{
+interface IThemedButtonProps {
     readonly color?: string;
     readonly backgroundColor?: string;
     readonly borderColor?: string;
@@ -8,9 +9,9 @@ interface IThemedButtonProps{
 }
 
 export const ThemedButton = styled.button<IThemedButtonProps>`
-color: ${props=>props.color || "#ffffff"};
-background-color: ${props=>props.backgroundColor || "#2196f3"};
-border-color: ${props=>props.borderColor || "#424242"};
+color: ${props => props.color || "#ffffff"};
+background-color: ${props => props.backgroundColor || "#2196f3"};
+border-color: ${props => props.borderColor || "#424242"};
 display: inline-block;
 margin-bottom: 0;
 font-weight: normal;
@@ -28,7 +29,7 @@ border-radius: 4px;
 -moz-user-select: none;
 -ms-user-select: none;
 user-select: none;
-&:hover{
+&:active{
     filter: brightness(125%);
 }
 &:disabled{
@@ -36,4 +37,9 @@ user-select: none;
     background-color:#787878;
     filter: initial;
 }
+${mediaQueries("sm")`
+&:hover{
+    filter: brightness(125%);
+}
+`}
 `

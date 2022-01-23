@@ -276,7 +276,7 @@ describe('PATCH method', () => {
     });
 });
 
-it('should return 404 on fetch resource not to exist ', () => {
+it('should return 404 on fetch resource not to exist', () => {
 
     (async () => {
         const result = await PFSW.doPseudoFetch("/url/not/to/exits");

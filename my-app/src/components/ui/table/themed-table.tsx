@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const ThemedTable = styled.table`
 border: 0 none;
@@ -50,4 +50,50 @@ scrollbar-color: #D4AA70 #e4e4e4;
         outline: 0;
     }
 }
+`
+
+export const pseudoTableMixin = css`
+border: 0 none;
+table-layout: fixed;
+border-spacing: 0;
+border-collapse: collapse;
+empty-cells: show;
+user-select: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-o-user-select: none;
+-ms-user-select: none;
+-webkit-touch-callout: none;
+scrollbar-color: #D4AA70 #e4e4e4;
+`
+
+export const pseudoTableRowMixin = css`
+border: 1px solid grey;
+&:nth-child(even){
+    background-color: rgb(88 88 88 / 50%);
+}
+`
+export const doResetPseudoTableRowMixin = css`
+border:initial;
+&:nth-child(even){
+    background-color:initial;
+}
+
+`
+
+export const pseudoTableCellMixin = css`
+overflow: hidden;
+vertical-align: middle;
+white-space: normal;
+width: auto;
+outline: 0;
+
+`
+export const doResetPseudoTableCellMixin = css`
+overflow: initial;
+vertical-align: initial;
+white-space: initial;
+width: auto;
+outline: initial;
 `

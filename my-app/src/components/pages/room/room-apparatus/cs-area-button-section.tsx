@@ -1,6 +1,4 @@
-import { useState } from "react";
 import styled from "styled-components";
-import { tIntegratedDataset } from "../integrated-apparatus-dara-set";
 
 const FlexContainerSection = styled.section`
 display:flex;

@@ -1,4 +1,4 @@
-import { IRoomRoomsInfo, IRoomsInfo } from "api/rooms-info-api/rooms-info";
+import { IRoomRoomsInfo } from "api/rooms-info-api/rooms-info";
 
 export function getApparatusNames(roomRoomsInfo: IRoomRoomsInfo) {
     return roomRoomsInfo

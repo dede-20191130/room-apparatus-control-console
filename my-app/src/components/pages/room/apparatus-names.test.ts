@@ -3,7 +3,7 @@ import { getApparatusNames } from "./apparatus-names";
 
 let roomsInfo: IRoomsInfo;
 
-it('should return apparatus-name array when 1 apparatus exists ', () => {
+it('should return apparatus-name array when 1 apparatus exists', () => {
     roomsInfo = {
         rooms: [
             { id: "room001", apparatus: [{ id: "test001", name: "テスト001", settingType: "lighting01" },] },

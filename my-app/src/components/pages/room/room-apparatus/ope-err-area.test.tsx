@@ -1,4 +1,4 @@
-import { waitFor, render, screen, fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import * as OperationCondition from "api/operation-condition-api/operation-condition";
 import { tIntegratedDataset } from "../integrated-apparatus-dara-set";
 import { OpeErrorArea } from "./ope-err-area";

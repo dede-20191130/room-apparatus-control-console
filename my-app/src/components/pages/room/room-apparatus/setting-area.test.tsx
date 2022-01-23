@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { setOperationConditionSgl } from "api/operation-condition-api/operation-condition";
 import { tIntegratedDataset } from "../integrated-apparatus-dara-set";
 import { SettingArea } from "./setting-area";

@@ -2,7 +2,7 @@ import { setOperationConditionSgl } from "api/operation-condition-api/operation-
 import { ThemedButton } from "components/ui/button/themed-button";
 import { ThemedTable } from "components/ui/table/themed-table";
 import { updateOCsContext } from "context/oc-context";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { tIntegratedDataset } from "../integrated-apparatus-dara-set";
 import { RoomIdContext } from "../room-frame";

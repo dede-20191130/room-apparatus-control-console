@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { RoomCondIndicator } from "./room-cond-indicator";
 import { tRoomCondInfos } from "./room-cond-info-hook";
 
-it('should indicate patterns: [normal, error, not-exist] ', () => {
+it('should indicate patterns: [normal, error, not-exist]', () => {
     const roomCondInfo: tRoomCondInfos[number] = {
         id: "room008",
         apparatus: [

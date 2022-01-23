@@ -1,19 +1,43 @@
-import { memo } from 'react'
+import { memo, useState } from 'react'
 import isDeepEqual from 'fast-deep-equal/react'
 import { IRoomRoomsInfo } from "api/rooms-info-api/rooms-info";
 import { LinkClassifiedOnActive } from "components/ui/link/link-classified-on-active";
-import { useContext } from "react"
 import { getApparatusNames } from "./apparatus-names"
 import styled from 'styled-components';
+import { mediaQueries } from 'components/design/media-query-setting';
+import { useLocationPathChange } from 'components/hooks/path/location-path-change-hook';
+
+const RoomHeaderNav = styled.nav`
+display:flex;
+position:relative;
+height:50px;
+border-bottom:5px solid #006616;
+${mediaQueries("md")`
+height:auto;
+`}
+`
 
 const FlexContainerUl = styled.ul`
 display:flex;
-overflow: hidden;
+flex-direction:column;
 flex-wrap: nowrap;
+position:absolute;
+top:50px;
+left:-280px;
+z-index: 2;
+overflow: hidden;
+visibility:collapse;
+width:280px;
 margin:0;
 padding-left: 0;
-border-bottom:5px solid #006616;
+background-color:#222222;
 list-style:none;
+transition: left 0.3s ease-out 0s,visibility 0s linear 0.3s;
+&.active{
+    left:0;
+    visibility:visible;
+    transition: left 0.3s ease-out 0s;
+}
 & > li{
     a{
         display:block;
@@ -38,13 +62,41 @@ list-style:none;
         }
     }
 }
+${mediaQueries("md")`
+flex-direction:row;
+position:static;
+visibility:visible;
+width:auto;
+background-color:initial;
+transition:none;
+
+`}
+`
+const RoomHamburgerMenuButton = styled.button`
+border: none;
+background: none;
+color:white;
+font-size: 1.5em;
+cursor: pointer;
+${mediaQueries("md")`
+    display:none;
+`}
 `
 
 export const RoomHeader = memo(({ myroomInfo }: { myroomInfo: IRoomRoomsInfo }) => {
     const apparatusIDNames = getApparatusNames(myroomInfo);
+    const [isActiveRoomHeaderMenu, setIsActiveRoomHeaderMenu] = useState(false);
+    useLocationPathChange(() => {
+        setIsActiveRoomHeaderMenu(false);
+    });
     return (
-        <nav>
-            <FlexContainerUl>
+        <RoomHeaderNav>
+            <RoomHamburgerMenuButton
+                onClick={() => setIsActiveRoomHeaderMenu((prevState: boolean) => !prevState)}
+            >
+                ☰
+            </RoomHamburgerMenuButton>
+            <FlexContainerUl className={isActiveRoomHeaderMenu ? "active" : ""}>
                 <li><LinkClassifiedOnActive to="index">インデックス</LinkClassifiedOnActive></li>
                 {apparatusIDNames?.map(idnm => {
                     return (
@@ -52,6 +104,6 @@ export const RoomHeader = memo(({ myroomInfo }: { myroomInfo: IRoomRoomsInfo }) 
                     )
                 })}
             </FlexContainerUl>
-        </nav>
+        </RoomHeaderNav>
     )
 }, isDeepEqual)

@@ -3,7 +3,7 @@ import { LinkClassifiedOnActive } from "components/ui/link/link-classified-on-ac
 export const NavTop = () => {
     return (
         <li>
-            <LinkClassifiedOnActive to="/top">TOP</LinkClassifiedOnActive>
+            <LinkClassifiedOnActive to="/top" extraMatchTgt="top">TOP</LinkClassifiedOnActive>
         </li>
     )
 }

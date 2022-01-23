@@ -1,3 +1,4 @@
+import { mediaQueries } from "components/design/media-query-setting";
 import { useUpdateOCWhenInitialied } from "components/hooks/oc-management/update-oc";
 import styled from "styled-components";
 import { RoomCondIndicator } from "./room-cond-indicator";
@@ -14,15 +15,30 @@ justify-content:center;
 align-items: flex-start;
 width:90%;
 max-width:1050px;
-margin:0 auto;
+margin:0 auto 50px;
+
 & > div{
     overflow-y:auto;
-    width:calc(100% / 3);
-    height: 210px;
+    width:100%;
+    min-height: 210px;
     border:2px solid green;
     margin-left:-1px;
     margin-top:-1px;
+    &:empty{
+        display:none;
+    }
 }
+${mediaQueries("md")`
+& > div{
+    width:calc(100% / 3);
+    height: 210px;
+    &:empty{
+        display:block;
+    }
+    
+    
+}
+`}
 `
 
 const TblContainerDiv = styled.div`

@@ -1,15 +1,17 @@
-import { fetchOperationConditionAll, IOperationConditionAll, IOperationConditionSmmry } from 'api/operation-condition-api/operation-condition';
-import { fetchRoomInfo, IRoomsInfo } from 'api/rooms-info-api/rooms-info';
+import { IOperationConditionAll, IOperationConditionSmmry, fetchOperationConditionAll } from 'api/operation-condition-api/operation-condition';
+import { IRoomsInfo, fetchRoomInfo } from 'api/rooms-info-api/rooms-info';
 import { Header } from 'components/global/header/header';
 import { Sidebar } from 'components/global/sidebar/sidebar';
 import { Top } from 'components/pages/top/top';
 import { RoomsInfoContext } from 'context/ri-context';
 import React, { useEffect, useRef, useState } from 'react';
-import { Route, Routes } from 'react-router';
+import { Navigate, Route, Routes } from 'react-router';
 import isDeepEqual from 'fast-deep-equal/react'
 import { OperationConditionAllContext, OperationConditionSmmyContext, updateOCsContext } from 'context/oc-context';
 import { RoomFrame } from 'components/pages/room/room-frame';
 import styled, { createGlobalStyle } from 'styled-components';
+import { mediaQueries } from 'components/design/media-query-setting';
+import { useLocationPathChange } from 'components/hooks/path/location-path-change-hook';
 
 const FETCH_INTERVAL = (process.env.REACT_APP_FETCH_INTERVAL
   ? parseFloat(process.env.REACT_APP_FETCH_INTERVAL)
@@ -118,12 +120,20 @@ min-height:calc(100vh - 70px);
 `
 
 const StyledMain = styled.main`
+width:calc(100vw - 16px);
+${mediaQueries("md")`
 width:calc(100vw - 200px - 16px);
+
+`}
 `
 
 function App() {
   const roomInfo = useRoomInfo();
   const OpeCondObj = useOpeCondObj();
+  const [isActiveOfSidebar, setIsActiveOfSidebar] = useState(false);
+  useLocationPathChange(() => {
+    setIsActiveOfSidebar(false);
+  });
   return (
 
     <div>
@@ -132,9 +142,9 @@ function App() {
         <OperationConditionAllContext.Provider value={OpeCondObj.OCAll}>
           <OperationConditionSmmyContext.Provider value={OpeCondObj.OCSmmy}>
             <updateOCsContext.Provider value={OpeCondObj.updateOCs}>
-              <Header></Header>
+              <Header setIsActiveOfSidebar={setIsActiveOfSidebar}></Header>
               <FlexContainerDiv>
-                <Sidebar></Sidebar>
+                <Sidebar isActiveOfSidebar={isActiveOfSidebar}></Sidebar>
                 <StyledMain>
                   <Routes>
                     <Route path="/top" element={<Top></Top>}></Route>
@@ -143,6 +153,7 @@ function App() {
                         <Route key={room.id} path={`/${room.id}/*`} element={<RoomFrame roomId={room.id}></RoomFrame>}></Route>
                       )
                     })}
+                    <Route path="/" element={<Navigate to="/top" />} />
                   </Routes>
                 </StyledMain>
               </FlexContainerDiv>

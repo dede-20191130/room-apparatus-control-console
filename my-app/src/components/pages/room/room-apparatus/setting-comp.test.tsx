@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import React from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { IFormValues } from "./setting-area";
@@ -60,7 +60,7 @@ describe('Illuminance', () => {
         onSubmitMock.mockClear();
 
     });
-    it('should be initialized as defaultValue ', () => {
+    it('should be initialized as defaultValue', () => {
 
         expect((screen.getByRole("spinbutton") as HTMLInputElement).value).toBe("500");
 
@@ -104,7 +104,7 @@ describe.each([
             onSubmitMock.mockClear();
 
         });
-        it('should be initialized as defaultValue ', () => {
+        it('should be initialized as defaultValue', () => {
 
             expect((screen.getByRole("spinbutton") as HTMLInputElement).value).toBe("26.8");
 

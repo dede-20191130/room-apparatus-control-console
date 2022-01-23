@@ -1,4 +1,4 @@
-import { waitFor, render, screen, fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { IRoomsInfo } from "api/rooms-info-api/rooms-info";
 import { RoomsInfoContext } from "context/ri-context";
 import { RoomFrame } from "./room-frame";
